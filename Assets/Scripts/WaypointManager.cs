@@ -24,6 +24,7 @@ public class WaypointManager : MonoBehaviour
         foreach(GameObject go in lv1_waypoints)
         {
             Debug.Log(go.name);
+
         }
     }
 
