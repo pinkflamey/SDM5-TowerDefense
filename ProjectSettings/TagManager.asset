@@ -8,6 +8,7 @@ TagManager:
   - mousePointer
   - turretTower
   - path
+  - waypoint
   layers:
   - Default
   - TransparentFX
