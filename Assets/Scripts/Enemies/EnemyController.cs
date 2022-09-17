@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     public float maxHealth;
     public float movementSpeed;
     public float damage;
+    public float rotateSpeed;
 
     
 
@@ -44,7 +45,7 @@ public class EnemyController : MonoBehaviour
 
         if (moving)
         {
-            //RotateToPos(target.transform.position);
+            RotateToPos(target.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movementSpeed * Time.deltaTime);
 
         }
@@ -74,14 +75,20 @@ public class EnemyController : MonoBehaviour
 
     void RotateToPos(Vector3 targetPos)
     {
-        Vector3 objectPos = transform.position;
+        Vector3 direction = targetPos - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        float step = rotateSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, step);
+
+        /*Vector3 objectPos = transform.position;
         Vector3 targ = new Vector3(targetPos.x, objectPos.y, targetPos.z);
 
         targ.x = targ.x - objectPos.x;
         targ.z = targ.z - objectPos.z;
         float angle = Mathf.Atan2(targ.x, targ.z) * Mathf.Rad2Deg;
 
-        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));*/
 
     }
 }

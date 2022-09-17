@@ -7757,6 +7757,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5293929214550381685, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
+      propertyPath: rotateSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293929214550381685, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
       propertyPath: waypointList
       value: 1
       objectReference: {fileID: 0}
