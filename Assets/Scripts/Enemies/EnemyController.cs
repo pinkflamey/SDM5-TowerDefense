@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //TODO: Split normal enemy controls and animations into seperate scripts
-
-    [Header("Path/movement (which waypoints to follow)")]
+    [Header("Path/movement (which waypoints to follow) & toggles")]
+    public bool moving;
     public int waypointList;
     private List<GameObject> waypoints = new List<GameObject>(); //Actual waypoints to follow
+
+    [Header("Movement info")]
+    [SerializeField] private GameObject target;
+    [SerializeField] private int targetNumber;
 
     [Space]
 
     [Header("Settings")]
-    public int maxHealth;
-    public int movementSpeed;
-    public int damage;
+    public float maxHealth;
+    public float movementSpeed;
+    public float damage;
 
-    [Space]
+    
 
-    [Header("Information/toggles")]
-    [Tooltip("Boolean")] public bool walking = false;
-    [Tooltip("Boolean")] public bool running = false;
-    [Tooltip("Trigger")] public bool attacking01 = false;
-    [Tooltip("Trigger")] public bool attacking02 = false;
-    [Tooltip("Trigger")] public bool takingDamage = false;
-    [Tooltip("Trigger")] public bool die = false;
-
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
         {
@@ -42,106 +37,51 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        Animator anim = GetComponent<Animator>();
+        target = waypoints[targetNumber];
 
-        if (walking)
+        if (moving)
         {
-            running = false;
-            attacking01 = false;
-            attacking02 = false;
-            takingDamage = false;
-            die = false;
+            //RotateToPos(target.transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movementSpeed * Time.deltaTime);
 
-            anim.SetBool("Walk Forward", true);
-        }
-        else
-        {
-            anim.SetBool("Walk Forward", false);
         }
 
-        if (running)
+        if (transform.position == new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z))
         {
-            walking = false;
-            attacking01 = false;
-            attacking02 = false;
-            takingDamage = false;
-            die = false;
 
-            anim.SetBool("Run Forward", true);
-        }
-        else
-        {
-            anim.SetBool("Run Forward", false);
-        }
+            if (targetNumber + 1 == waypoints.Count)
+            {
+                moving = false;
+                target = null;
 
-        if (attacking01)
-        {
-            walking = false;
-            running = false;
-            attacking02 = false;
-            takingDamage = false;
-            die = false;
+            }
+            else
+            {
+                targetNumber++;
+                Debug.Log("New target: " + targetNumber + ", name: " + waypoints[targetNumber]);
+            }
 
-            anim.SetTrigger("Attack 01");
-            attacking01 = false;
-        }
 
-        if (attacking02)
-        {
-            walking = false;
-            running = false;
-            attacking01 = false;
-            takingDamage = false;
-            die = false;
 
-            anim.SetTrigger("Attack 02");
-            attacking02 = false;
-        }
 
-        if (takingDamage)
-        {
-            walking = false;
-            running = false;
-            attacking02 = false;
-            attacking01 = false;
-            die = false;
 
-            anim.SetTrigger("Take Damage");
-            takingDamage = false;
-        }
 
-        if (die)
-        {
-            walking = false;
-            running = false;
-            attacking02 = false;
-            attacking01 = false;
-            takingDamage = false;
-
-            anim.SetTrigger("Die");
-            die = false;
         }
     }
 
-    /*private IEnumerator changeRunning(bool changeTo)
+    void RotateToPos(Vector3 targetPos)
     {
-        yield return new WaitForSeconds(0.5f);
-        running = changeTo;
-        yield return null;
+        Vector3 objectPos = transform.position;
+        Vector3 targ = new Vector3(targetPos.x, objectPos.y, targetPos.z);
+
+        targ.x = targ.x - objectPos.x;
+        targ.z = targ.z - objectPos.z;
+        float angle = Mathf.Atan2(targ.x, targ.z) * Mathf.Rad2Deg;
+
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+
     }
-    private IEnumerator changeWalking(bool changeTo)
-    {
-        yield return new WaitForSeconds(0.5f);
-        walking = changeTo;
-        yield return null;
-    }*/
 }

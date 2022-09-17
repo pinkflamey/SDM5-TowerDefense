@@ -21,11 +21,11 @@ public class WaypointManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(GameObject go in lv1_waypoints)
+        /*foreach(GameObject go in lv1_waypoints)
         {
             Debug.Log(go.name);
 
-        }
+        }*/
     }
 
     // Update is called once per frame
