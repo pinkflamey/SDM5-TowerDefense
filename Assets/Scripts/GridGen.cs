@@ -25,6 +25,11 @@ public class GridGen : MonoBehaviour
                 PickAndSpawn(spawnPosition, Quaternion.identity);
             }
         }
+
+        foreach(Transform child in transform)
+        {
+
+        }
     }
 
     void PickAndSpawn(Vector3 positionToSpawn, Quaternion rotationToSpawn)
