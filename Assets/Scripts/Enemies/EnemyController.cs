@@ -21,11 +21,16 @@ public class EnemyController : MonoBehaviour
     public float damage;
     public float rotateSpeed;
 
-    
+    [Header("Animation")]
+    [SerializeField] private EnemyAnimationController animationController;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //Waypoints initialization
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
         {
             case 1:
@@ -36,6 +41,9 @@ public class EnemyController : MonoBehaviour
                 waypoints = WaypointManager.lv1_waypoints;
                 break;
         }
+
+        //AnimationController variable initialization
+        animationController = gameObject.GetComponent<EnemyAnimationController>();
     }
 
     // Update is called once per frame
@@ -45,9 +53,13 @@ public class EnemyController : MonoBehaviour
 
         if (moving)
         {
-            RotateToPos(target.transform.position);
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movementSpeed * Time.deltaTime);
-
+            RotateToPos(target.transform.position); //Rotate to target waypoint
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movementSpeed * Time.deltaTime); //Move to target waypoint
+            animationController.walking = true; //Set walking animation
+        }
+        else
+        {
+            animationController.walking = false;
         }
 
         if (transform.position == new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z))
