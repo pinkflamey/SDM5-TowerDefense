@@ -40,7 +40,15 @@ public class TowerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //enemiesInRange = Physics.OverlapSphere(transform.position, range);
+        Collider[] cInRange = Physics.OverlapSphere(transform.position, range);
+        foreach (Collider c in cInRange)
+        {
+            if(c.gameObject.tag == "enemy")
+            {
+                enemiesInRange.Add(c.gameObject);
+            }
+            
+        }
 
         if (shoot)
         {
@@ -67,5 +75,11 @@ public class TowerController : MonoBehaviour
 
         
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }
