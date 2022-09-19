@@ -10,14 +10,16 @@ public class TowerController : MonoBehaviour
     [Header("Information")]
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject turret;
+    [SerializeField] private List<GameObject> enemiesInRange;
 
     [Space]
 
     [Header("Settings")]
-    public float damage = 1f;
-    public float health = 1f;
-    public float projSpeed = 1f;
     public GameObject projectile;
+    [Range(1.0f, 20.0f)] public float damage = 1f;
+    [Range(1.0f, 20.0f)] public float health = 1f;
+    [Range(1.0f, 20.0f)] public float range = 5f;
+    [Range(1.0f, 20.0f)] public float projSpeed = 1f;
     [Range(1.0f, 15.0f)] public float TargetRadius;
     [Range(20.0f, 75.0f)] public float LaunchAngle;
     [Range(0.0f, 10.0f)] public float TargetHeightOffsetFromGround;
@@ -38,6 +40,8 @@ public class TowerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //enemiesInRange = Physics.OverlapSphere(transform.position, range);
+
         if (shoot)
         {
             shoot = false;
