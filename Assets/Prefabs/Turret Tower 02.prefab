@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4994361471513534}
   - component: {fileID: 33659418589596394}
   - component: {fileID: 23440287904445814}
+  - component: {fileID: 90990330596582870}
   m_Layer: 0
   m_Name: Turret Tower 02
   m_TagString: Untagged
@@ -84,6 +85,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &90990330596582870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281131148181860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3df475bde056e4c995638c6ce73854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot: 0
+  target: {fileID: 0}
+  turret: {fileID: 0}
+  damage: 1
+  health: 1
+  projSpeed: 1
+  projectile: {fileID: 2746113906392424735, guid: e8d573fc915faef48bfe7118b75bbf34, type: 3}
 --- !u!1 &1953229512028398
 GameObject:
   m_ObjectHideFlags: 0

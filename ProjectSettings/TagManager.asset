@@ -9,6 +9,8 @@ TagManager:
   - turretTower
   - path
   - waypoint
+  - enemy
+  - projectile
   layers:
   - Default
   - TransparentFX
