@@ -20164,6 +20164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefabs:
   - {fileID: 1281131148181860, guid: 80b7202ce07fdd542a50418577e639db, type: 3}
+  - {fileID: 1770514590405088, guid: 1cace56ba420dd64c9171c422c8e9aaa, type: 3}
+  selectedTower: 0
   selectedObject: {fileID: 0}
   hitDataPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &1101892834
@@ -39080,6 +39082,10 @@ PrefabInstance:
     - target: {fileID: 4744222756475520, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202297050624774657, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
+      propertyPath: moving
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6202297050624774657, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: waypointList

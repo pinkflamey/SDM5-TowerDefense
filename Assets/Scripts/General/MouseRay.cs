@@ -6,6 +6,7 @@ public class MouseRay : MonoBehaviour
 {
     [Header("Settings")]
     public List<GameObject> towerPrefabs;
+    [Range(0, 1)] public int selectedTower = 0;
 
     [Header("Info")]
     public GameObject selectedObject;
@@ -28,7 +29,7 @@ public class MouseRay : MonoBehaviour
         {
             CubeController cc = selectedObject.gameObject.GetComponent<CubeController>();
 
-            cc.PlaceTower(towerPrefabs[0]);
+            cc.PlaceTower(towerPrefabs[selectedTower]);
         }
     }
 }
