@@ -75,19 +75,19 @@ public class TowerController : MonoBehaviour
 
     void FindEnemies()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
-        for (int i = 0; i < enemies.Length; i++)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy"); //Find all enemies in the game
+        for (int i = 0; i < enemies.Length; i++) //For each enemy
         {
-            if ((transform.position - enemies[i].transform.position).magnitude < range)
+            if ((transform.position - enemies[i].transform.position).magnitude < range) //Check if enemy is in range
             {
-                if (!enemiesInRange.Contains(enemies[i]))
+                if (!enemiesInRange.Contains(enemies[i])) //if the in-range list doesnt have the enemy,
                 {
-                    enemiesInRange.Add(enemies[i]);
+                    enemiesInRange.Add(enemies[i]); //add the enemy to the in-range list
                 }
             }
             else
             {
-                enemiesInRange.Remove(enemies[i]);
+                enemiesInRange.Remove(enemies[i]); //If enemy is not in range, remove it from the in-range list
             }
         }
     }
