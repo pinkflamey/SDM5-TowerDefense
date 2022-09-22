@@ -6,7 +6,7 @@ public class MouseRay : MonoBehaviour
 {
     [Header("Settings")]
     public List<GameObject> towerPrefabs;
-    [Range(0, 1)] public int selectedTower = 0;
+    [Range(0, 2)] public int selectedTower = 0;
 
     [Header("Info")]
     public GameObject selectedObject;

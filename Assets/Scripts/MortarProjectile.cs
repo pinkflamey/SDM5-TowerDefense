@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class MortarProjectile : MonoBehaviour
 {
     // launch variables
     [SerializeField] public Transform TargetObjectTF;

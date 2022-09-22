@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 23788206743257480}
   - component: {fileID: 7765844677012308809}
   m_Layer: 0
-  m_Name: Archer tower
+  m_Name: MagicLaser Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,10 +1411,11 @@ MonoBehaviour:
   target: {fileID: 0}
   turret: {fileID: 0}
   enemiesInRange: []
+  projType: 2
   projectile: {fileID: 0}
   damage: 1
   health: 1
-  range: 5
+  range: 3.9
   projSpeed: 1
   TargetRadius: 0
   LaunchAngle: 0
