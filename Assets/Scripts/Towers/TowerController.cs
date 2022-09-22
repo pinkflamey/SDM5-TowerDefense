@@ -50,12 +50,18 @@ public class TowerController : MonoBehaviour
     void Update()
     {
         FindEnemies();
+        FindClosestEnemy();
+        Shoot();
+        
+    }
 
-        if (shoot)
+    void Shoot()
+    {
+        if (shoot && target != null) //If shoot is triggered and there is a target
         {
-            shoot = false;
+            shoot = false; //Set shoot back to false
 
-            switch (projType)
+            switch (projType) //Different shooting types select
             {
                 case 0:
                     ShootEnemyMortar(target);
@@ -71,6 +77,31 @@ public class TowerController : MonoBehaviour
                     break;
             }
         }
+        else //If shoot is triggered but the target is null,
+        {
+            shoot = false; //Set shoot back to false
+        }
+    }
+
+    void FindClosestEnemy()
+    {
+        GameObject closest = null; //Set up variable for keeping track of closest enemy
+        foreach(GameObject o in enemiesInRange) //For each enemy in range
+        {
+            if(closest != null) //If the closest is not nothing
+            {
+                if (Vector3.Distance(o.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position)) // If the distance between enemy-tower is less than closest-tower
+                {
+                    closest = o; //The new closest is the enemy
+                }
+            }
+            else
+            {
+                closest = o;
+            }
+            
+        }
+        target = closest; //The target is the closest enemy
     }
 
     void FindEnemies()
@@ -130,10 +161,15 @@ public class TowerController : MonoBehaviour
     {
         Debug.Log("Fire laser");
 
-        Vector3 dir = transform.position - t.transform.position;
+        Vector3 dir = -(transform.position - t.transform.position).normalized;
 
         Ray ray = new Ray(transform.position, dir);
-        Debug.DrawRay(transform.position, dir, Color.blue);
+        RaycastHit hitData;
+        Physics.Raycast(ray, out hitData);
+        Debug.DrawRay(transform.position, dir * 10, Color.blue, 3f);
+
+        GameObject hitObj = hitData.transform.gameObject;
+        Debug.Log("I hit the object " + hitObj.name + "!");
     }
 
 

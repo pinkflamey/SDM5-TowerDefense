@@ -10328,7 +10328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5293929214550381685, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
       propertyPath: moving
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5293929214550381685, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
       propertyPath: rotateSpeed
@@ -39113,7 +39113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.09
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -39121,7 +39121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 4744222756475520, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39153,7 +39153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6202297050624774657, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: moving
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6202297050624774657, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
       propertyPath: waypointList
