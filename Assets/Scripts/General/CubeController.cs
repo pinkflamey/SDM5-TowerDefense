@@ -33,7 +33,7 @@ public class CubeController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("A mouse has entered me! UwU");
+        //Debug.Log("A mouse has entered me!");
 
         Vector3 pos = transform.position;
 

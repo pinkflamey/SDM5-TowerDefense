@@ -161,12 +161,14 @@ public class TowerController : MonoBehaviour
     {
         Debug.Log("Fire laser");
 
-        Vector3 dir = -(transform.position - t.transform.position).normalized;
+        Vector3 raypos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+        Vector3 targetpos = new Vector3(t.transform.position.x, t.transform.position.y + 0.25f, t.transform.position.z);
+        Vector3 dir = -(raypos - targetpos);
 
-        Ray ray = new Ray(transform.position, dir);
+        Ray ray = new Ray(raypos, dir);
         RaycastHit hitData;
         Physics.Raycast(ray, out hitData);
-        Debug.DrawRay(transform.position, dir * 10, Color.blue, 3f);
+        Debug.DrawRay(raypos, dir * 10, Color.blue, 3f);
 
         GameObject hitObj = hitData.transform.gameObject;
         Debug.Log("I hit the object " + hitObj.name + "!");
