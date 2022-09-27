@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 targetNumber++;
-                Debug.Log("New target: " + targetNumber + ", name: " + waypoints[targetNumber]);
+                //Debug.Log("New target: " + targetNumber + ", name: " + waypoints[targetNumber]);
             }
         }
 
@@ -103,6 +103,7 @@ public class EnemyController : MonoBehaviour
     }
     IEnumerator Die()
     {
+        moving = false;
         animationController.die = true;
 
         yield return new WaitForSeconds(1.35f);

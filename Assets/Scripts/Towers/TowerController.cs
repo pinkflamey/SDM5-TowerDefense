@@ -170,7 +170,7 @@ public class TowerController : MonoBehaviour
 
     void ShootEnemyLaser(GameObject t)
     {
-        Debug.Log("Fire laser");
+        //Debug.Log("Fire laser");
 
         Vector3 raypos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
         Vector3 targetpos = new Vector3(t.transform.position.x, t.transform.position.y + 0.25f, t.transform.position.z);
@@ -186,7 +186,7 @@ public class TowerController : MonoBehaviour
         
 
         GameObject hitObj = hitData.transform.gameObject;
-        Debug.Log("I hit the object " + hitObj.name + "!");
+        //Debug.Log("I hit the object " + hitObj.name + "!");
 
         if(hitObj.tag == "enemy")
         {

@@ -1167,11 +1167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33ceb7fa143a64499fc71e29170584c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: 0
+  currentHealth: 0
+  damage_10: 0
+  moving: 1
   waypointList: 0
   target: {fileID: 0}
   targetNumber: 0
-  maxHealth: 0
+  maxHealth: 5
   movementSpeed: 3
   damage: 0
   rotateSpeed: 3
