@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("General")]
+    public float currentHealth;
+    public bool damage_10 = false;
+
     [Header("Path/movement (which waypoints to follow) & toggles")]
     public bool moving;
     public int waypointList;
@@ -30,6 +34,9 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Set health to maxhealth
+        currentHealth = maxHealth;
+
         //Waypoints initialization
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
         {
@@ -76,13 +83,33 @@ public class EnemyController : MonoBehaviour
                 targetNumber++;
                 Debug.Log("New target: " + targetNumber + ", name: " + waypoints[targetNumber]);
             }
-
-
-
-
-
-
         }
+
+        if (damage_10)
+        {
+            damage_10 = false;
+            TakeDamage(10f);
+        }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            //Die
+            StartCoroutine(Die());
+        }
+    }
+    IEnumerator Die()
+    {
+        animationController.die = true;
+
+        yield return new WaitForSeconds(1.35f);
+
+        Destroy(gameObject);
+
+        yield return null;
     }
 
     void RotateToPos(Vector3 targetPos)

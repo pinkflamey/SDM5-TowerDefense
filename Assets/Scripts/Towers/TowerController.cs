@@ -180,18 +180,18 @@ public class TowerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0, 1, 1, (colorTransparency / 100));
-        
+        Vector3 gizmopos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
 
         switch (gizmoType)
         {
             case 0:
-                Gizmos.DrawWireSphere(transform.position, range);
+                Gizmos.DrawWireSphere(gizmopos, range);
                 break;
             case 1:
-                Gizmos.DrawSphere(transform.position, range);
+                Gizmos.DrawSphere(gizmopos, range);
                 break;
             default:
-                Gizmos.DrawWireSphere(transform.position, range);
+                Gizmos.DrawWireSphere(gizmopos, range);
                 break;
         }
     }
