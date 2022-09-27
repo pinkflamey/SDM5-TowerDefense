@@ -15,11 +15,12 @@ public class TowerController : MonoBehaviour
     [Space]
 
     [Header("Settings")]
-    [Tooltip("0: Mortar | 1: Arrow (Ray)")] [Range(0, 2)] public int projType = 0;
+    [Tooltip("0: Mortar | 1: Magic Ray")] [Range(0, 2)] public int projType = 0;
     [Tooltip("Not for RayTrace tower types")] public GameObject projectile;
     [Range(1.0f, 20.0f)] public float damage = 1f;
     [Range(1.0f, 20.0f)] public float health = 1f;
     [Range(1.0f, 20.0f)] public float range = 5f;
+    [Range(0.1f, 20.0f)] public float delay = 1.0f;
     [Range(1.0f, 20.0f)] public float projSpeed = 1f;
 
     [Header("Mortar tower settings")]
@@ -51,15 +52,19 @@ public class TowerController : MonoBehaviour
     {
         FindEnemies();
         FindClosestEnemy();
-        Shoot();
+
+        if (shoot)
+        {
+            shoot = false;
+            StartCoroutine(Shoot());
+        }
         
     }
 
-    void Shoot()
+    IEnumerator Shoot()
     {
-        if (shoot && target != null) //If shoot is triggered and there is a target
+        if ((target != null)) //If shoot is triggered and there is a target
         {
-            shoot = false; //Set shoot back to false
 
             switch (projType) //Different shooting types select
             {
@@ -77,10 +82,16 @@ public class TowerController : MonoBehaviour
                     break;
             }
         }
-        else //If shoot is triggered but the target is null,
+        /*else //If shoot is triggered but the target is null,
         {
             shoot = false; //Set shoot back to false
-        }
+        }*/
+
+        yield return new WaitForSeconds(delay);
+
+        shoot = true;
+
+        yield return null;
     }
 
     void FindClosestEnemy()
@@ -172,6 +183,13 @@ public class TowerController : MonoBehaviour
 
         GameObject hitObj = hitData.transform.gameObject;
         Debug.Log("I hit the object " + hitObj.name + "!");
+
+        if(hitObj.tag == "enemy")
+        {
+            EnemyController enemy = hitObj.GetComponent<EnemyController>();
+
+            enemy.TakeDamage(damage);
+        }
     }
 
 
