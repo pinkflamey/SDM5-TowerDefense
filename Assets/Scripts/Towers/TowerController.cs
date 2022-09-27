@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerController : MonoBehaviour
 {
     [Header("Triggers")]
-    public bool shoot = false;
+    public bool shoot = true;
 
     [Header("Information")]
     [SerializeField] private GameObject target;
@@ -178,8 +178,12 @@ public class TowerController : MonoBehaviour
 
         Ray ray = new Ray(raypos, dir);
         RaycastHit hitData;
+
         Physics.Raycast(ray, out hitData);
         Debug.DrawRay(raypos, dir * 10, Color.blue, 3f);
+        Vector3[] linePositions = {raypos, targetpos};
+        StartCoroutine(CreateLaserLines(linePositions));
+        
 
         GameObject hitObj = hitData.transform.gameObject;
         Debug.Log("I hit the object " + hitObj.name + "!");
@@ -191,7 +195,15 @@ public class TowerController : MonoBehaviour
             enemy.TakeDamage(damage);
         }
     }
+    IEnumerator CreateLaserLines(Vector3[] positions)
+    {
+        gameObject.GetComponent<LineRenderer>().SetPositions(positions);
 
+        yield return new WaitForSeconds(delay - (delay / 2));
+
+        Vector3[] _positions = {transform.position, transform.position};
+        gameObject.GetComponent<LineRenderer>().SetPositions(_positions);
+    }
 
 
 
