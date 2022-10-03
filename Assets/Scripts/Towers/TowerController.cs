@@ -120,16 +120,19 @@ public class TowerController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy"); //Find all enemies in the game
         for (int i = 0; i < enemies.Length; i++) //For each enemy
         {
-            if ((transform.position - enemies[i].transform.position).magnitude < range) //Check if enemy is in range
+            if(enemies[i] != null) //Check if enemy does still exist
             {
-                if (!enemiesInRange.Contains(enemies[i])) //if the in-range list doesnt have the enemy,
+                if ((transform.position - enemies[i].transform.position).magnitude < range) //Check if enemy is in range
                 {
-                    enemiesInRange.Add(enemies[i]); //add the enemy to the in-range list
+                    if (!enemiesInRange.Contains(enemies[i])) //if the in-range list doesnt have the enemy,
+                    {
+                        enemiesInRange.Add(enemies[i]); //add the enemy to the in-range list
+                    }
                 }
-            }
-            else
-            {
-                enemiesInRange.Remove(enemies[i]); //If enemy is not in range, remove it from the in-range list
+                else
+                {
+                    enemiesInRange.Remove(enemies[i]); //If enemy is not in range, remove it from the in-range list
+                }
             }
         }
     }
@@ -190,10 +193,14 @@ public class TowerController : MonoBehaviour
 
         if(hitObj.tag == "enemy")
         {
-            EnemyController enemy = hitObj.GetComponent<EnemyController>();
+            
             try
             {
-                enemy.TakeDamage(damage);
+                EnemyController enemy = hitObj.GetComponent<EnemyController>();
+                if(enemy.currentHealth > 0)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
             catch
             {
