@@ -191,8 +191,14 @@ public class TowerController : MonoBehaviour
         if(hitObj.tag == "enemy")
         {
             EnemyController enemy = hitObj.GetComponent<EnemyController>();
-
-            enemy.TakeDamage(damage);
+            try
+            {
+                enemy.TakeDamage(damage);
+            }
+            catch
+            {
+                return;
+            }
         }
     }
     IEnumerator CreateLaserLines(Vector3[] positions)
