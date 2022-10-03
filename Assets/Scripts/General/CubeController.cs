@@ -22,13 +22,6 @@ public class CubeController : MonoBehaviour
     public void PlaceTower(GameObject towerType)
     {
         Instantiate(towerType, transform); //Places tower of certain type
-        /*foreach(Transform c in transform)
-        {
-            if(c.gameObject.tag == "path")
-            {
-                Destroy(c.gameObject);
-            }
-        }*/
     }
 
     private void OnMouseEnter()
