@@ -19954,18 +19954,15 @@ MonoBehaviour:
   - name: 1st
     enemies:
     - {fileID: 1111084942782338, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
-    - {fileID: 1975194375736644, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
-    count: 1000000004000000
-    enemyDelay: 2
-    timeTillNextWave: 5
+    count: 01000000
+    enemyDelay: 1
+    timeTillNextWave: 2
   - name: Final
     enemies:
     - {fileID: 1975194375736644, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
-    - {fileID: 1975194375736644, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
-    - {fileID: 1975194375736644, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
-    count: 020000000200000002000000
+    count: 01000000
     enemyDelay: 1
-    timeTillNextWave: 5
+    timeTillNextWave: 2
   waveCount: 0
   enemySpawnObj: {fileID: 354283910}
 --- !u!114 &1102720359

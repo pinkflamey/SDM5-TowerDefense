@@ -25,15 +25,30 @@ public class StatController : MonoBehaviour
     int GetMaxEnemies()
     {
         WaveController wc = gameObject.GetComponent<WaveController>();
-
-        Wave currentWave = wc.waves[wc.waveCount];
+        Wave currentWave = null;
+        try
+        {
+            currentWave = wc.waves[wc.waveCount];
+        }
+        catch { }
 
         int maxEnemies = 0;
 
-        foreach(int enemyTypeCount in currentWave.count)
+        if(currentWave != null)
         {
-            maxEnemies += enemyTypeCount;
+            foreach (int enemyTypeCount in currentWave.count)
+            {
+                try
+                {
+                    maxEnemies += enemyTypeCount;
+                }
+                catch
+                {
+                    break;
+                }
+            }
         }
+        
 
         return maxEnemies;
     }
