@@ -19875,6 +19875,7 @@ GameObject:
   - component: {fileID: 1102720356}
   - component: {fileID: 1102720358}
   - component: {fileID: 1102720357}
+  - component: {fileID: 1102720359}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -19954,8 +19955,8 @@ MonoBehaviour:
     enemies:
     - {fileID: 1111084942782338, guid: 84493eaa65d75074ca2c6e2d8a90ff9a, type: 3}
     - {fileID: 1975194375736644, guid: 128a80094e00bf34fa2555766a7eea0e, type: 3}
-    count: 0600000004000000
-    enemyDelay: 1
+    count: 1000000004000000
+    enemyDelay: 2
     timeTillNextWave: 5
   - name: Final
     enemies:
@@ -19967,6 +19968,20 @@ MonoBehaviour:
     timeTillNextWave: 5
   waveCount: 0
   enemySpawnObj: {fileID: 354283910}
+--- !u!114 &1102720359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102720354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796cfdafe6c727f43a1b30545c50bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterObject: {fileID: 1561193409}
+  currentMax: 0
 --- !u!4 &1107209533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4775219554002278, guid: 6b444276162548b4e9107350b71e775a, type: 3}
@@ -28422,7 +28437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/6
+  m_text: 0 / 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2dd0d0c64ba7bf24c9a94a3d4d67c417, type: 2}
   m_sharedMaterial: {fileID: 3039063190249936099, guid: 2dd0d0c64ba7bf24c9a94a3d4d67c417, type: 2}
@@ -28459,8 +28474,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 26
-  m_wordSpacing: 0
+  m_characterSpacing: -4.15
+  m_wordSpacing: 17.5
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -37832,6 +37847,10 @@ PrefabInstance:
     - target: {fileID: 1770514590405088, guid: 1cace56ba420dd64c9171c422c8e9aaa, type: 3}
       propertyPath: m_Name
       value: MagicLaser Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770514590405088, guid: 1cace56ba420dd64c9171c422c8e9aaa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072828905429358, guid: 1cace56ba420dd64c9171c422c8e9aaa, type: 3}
       propertyPath: m_RootOrder
