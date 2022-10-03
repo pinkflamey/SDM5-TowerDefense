@@ -35,9 +35,14 @@ public class CubeController : MonoBehaviour
     {
         //Debug.Log("A mouse has entered me!");
 
-        Vector3 pos = transform.position;
+        if (tag == "gridCube")
+        {
 
-        transform.position = new Vector3(pos.x, pos.y + selectHeight, pos.z);
+            Vector3 pos = transform.position;
+
+            transform.position = new Vector3(pos.x, pos.y + selectHeight, pos.z);
+        }
+
 
         /*Animator animator = GetComponent<Animator>();
         animator.SetBool("selected", true);*/
@@ -45,10 +50,14 @@ public class CubeController : MonoBehaviour
 
     private void OnMouseExit()
     {
-        Vector3 pos = transform.position;
+        if(tag == "gridCube")
+        {
 
-        transform.position = new Vector3(pos.x, pos.y - selectHeight, pos.z);
-        
+            Vector3 pos = transform.position;
+
+            transform.position = new Vector3(pos.x, pos.y - selectHeight, pos.z);
+        }
+
         /*Animator animator = GetComponent<Animator>();
         animator.SetBool("selected", false);*/
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33838782530932874}
   - component: {fileID: 23296891081351882}
   - component: {fileID: -7543579914144404528}
+  - component: {fileID: -4429882878140661781}
   m_Layer: 0
   m_Name: Cube
   m_TagString: gridCube
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectHeight: 0.15
+--- !u!65 &-4429882878140661781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619558185565566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999998, y: 2, z: 2.0000005}
+  m_Center: {x: -0.000000923872, y: 0, z: 0}

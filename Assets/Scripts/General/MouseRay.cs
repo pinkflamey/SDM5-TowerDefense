@@ -16,6 +16,7 @@ public class MouseRay : MonoBehaviour
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out hitData, 1000))
         {
             hitDataPos = hitData.transform.position;
