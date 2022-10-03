@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3df475bde056e4c995638c6ce73854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: 0
+  shoot: 1
   target: {fileID: 0}
   turret: {fileID: 0}
   enemiesInRange: []
@@ -1432,7 +1432,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770514590405088}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
