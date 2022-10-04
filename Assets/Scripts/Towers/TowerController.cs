@@ -101,9 +101,20 @@ public class TowerController : MonoBehaviour
         {
             if(closest != null) //If the closest is not nothing
             {
-                if (Vector3.Distance(o.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position)) // If the distance between enemy-tower is less than closest-tower
+                /*if (Vector3.Distance(o.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position) && o != null && closest != null) // If the distance between enemy-tower is less than closest-tower
                 {
                     closest = o; //The new closest is the enemy
+                }*/
+                try
+                {
+                    if (Vector3.Distance(o.transform.position, transform.position) < Vector3.Distance(closest.transform.position, transform.position)) // If the distance between enemy-tower is less than closest-tower
+                    {
+                        closest = o; //The new closest is the enemy
+                    }
+                }
+                catch
+                {
+
                 }
             }
             else
@@ -198,22 +209,26 @@ public class TowerController : MonoBehaviour
         }
         //Debug.Log("I hit the object " + hitObj.name + "!");
 
-        if(hitObj.tag == "enemy")
+        if(hitObj != null)
         {
-            
-            try
+            if (hitObj.tag == "enemy")
             {
-                EnemyController enemy = hitObj.GetComponent<EnemyController>();
-                if(enemy.currentHealth > 0)
+
+                try
                 {
-                    enemy.TakeDamage(damage);
+                    EnemyController enemy = hitObj.GetComponent<EnemyController>();
+                    if (enemy.currentHealth > 0)
+                    {
+                        enemy.TakeDamage(damage);
+                    }
+                }
+                catch
+                {
+                    return;
                 }
             }
-            catch
-            {
-                return;
-            }
         }
+        
     }
     IEnumerator CreateLaserLines(Vector3[] positions)
     {

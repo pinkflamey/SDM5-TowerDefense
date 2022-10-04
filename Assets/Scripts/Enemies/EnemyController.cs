@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
     public float movementSpeed;
     public float damage;
     public float rotateSpeed;
+    public GameObject jail;
 
     [Header("Animation")]
     [SerializeField] private EnemyAnimationController animationController;
@@ -36,6 +37,9 @@ public class EnemyController : MonoBehaviour
     {
         //Set health to maxhealth
         currentHealth = maxHealth;
+
+        //Find jail
+        jail = GameObject.Find("Jail");
 
         //Waypoints initialization
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
@@ -107,6 +111,10 @@ public class EnemyController : MonoBehaviour
         animationController.die = true;
 
         yield return new WaitForSeconds(1.35f);
+
+        transform.position = jail.transform.position; //Send enemies to the "jail" before they die, so towers can't shoot a non-existent object
+
+        yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
 
