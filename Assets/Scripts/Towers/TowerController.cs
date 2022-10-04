@@ -186,9 +186,16 @@ public class TowerController : MonoBehaviour
         Debug.DrawRay(raypos, dir * 10, Color.blue, 3f);
         Vector3[] linePositions = {raypos, targetpos};
         StartCoroutine(CreateLaserLines(linePositions));
-        
 
-        GameObject hitObj = hitData.transform.gameObject;
+        GameObject hitObj = null;
+        try
+        {
+            hitObj = hitData.transform.gameObject;
+        }
+        catch
+        {
+            
+        }
         //Debug.Log("I hit the object " + hitObj.name + "!");
 
         if(hitObj.tag == "enemy")
