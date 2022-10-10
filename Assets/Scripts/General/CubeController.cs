@@ -19,11 +19,6 @@ public class CubeController : MonoBehaviour
         
     }
 
-    public void PlaceTower(GameObject towerType)
-    {
-        Instantiate(towerType, transform); //Places tower of certain type
-    }
-
     private void OnMouseEnter()
     {
         //Debug.Log("A mouse has entered me!");

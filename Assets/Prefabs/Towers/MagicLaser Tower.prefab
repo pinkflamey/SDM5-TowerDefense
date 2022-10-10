@@ -1413,6 +1413,7 @@ MonoBehaviour:
   target: {fileID: 0}
   turret: {fileID: 0}
   enemiesInRange: []
+  placementCost: 50
   projType: 2
   projectile: {fileID: 0}
   damage: 1

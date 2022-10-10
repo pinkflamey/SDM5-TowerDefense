@@ -6,11 +6,11 @@ TagManager:
   tags:
   - gridCube
   - mousePointer
-  - turretTower
   - path
   - waypoint
   - enemy
   - projectile
+  - tower
   layers:
   - Default
   - TransparentFX

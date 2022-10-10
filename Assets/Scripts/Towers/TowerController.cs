@@ -15,6 +15,7 @@ public class TowerController : MonoBehaviour
     [Space]
 
     [Header("Settings")]
+    public float placementCost = 1f;
     [Tooltip("0: Mortar | 1: Magic Ray")] [Range(0, 2)] public int projType = 0;
     [Tooltip("Not for RayTrace tower types")] public GameObject projectile;
     [Range(1.0f, 20.0f)] public float damage = 1f;
