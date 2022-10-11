@@ -212,6 +212,7 @@ MonoBehaviour:
   waypointList: 0
   target: {fileID: 0}
   targetNumber: 0
+  killReward: 20
   maxHealth: 5
   movementSpeed: 3
   damage: 0

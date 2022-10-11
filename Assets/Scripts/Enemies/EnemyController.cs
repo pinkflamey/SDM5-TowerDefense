@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     [Space]
 
     [Header("Settings")]
+    [Range(0f, 100f)] public float killReward = 0f;
     public float maxHealth;
     public float movementSpeed;
     public float damage;
@@ -30,7 +31,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyAnimationController animationController;
 
 
-
+    private StatController sc;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,8 @@ public class EnemyController : MonoBehaviour
 
         //Find jail
         jail = GameObject.Find("Jail");
+        //Find Stat Controller
+        sc = GameObject.Find("GameController").GetComponent<StatController>();
 
         //Waypoints initialization
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
@@ -102,6 +105,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             //Die
+            sc.AddTakeMoney(killReward); //Adds killReward amount of money to the StatController
             StartCoroutine(Die());
         }
     }
