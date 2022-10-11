@@ -143,4 +143,15 @@ public class EnemyController : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));*/
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "endpoint") //If the collider is the endpoint
+        {
+            EndpointController ec = collision.gameObject.GetComponent<EndpointController>(); //Get the end point controller
+
+            ec.TakeDamage(damage); //Send damage to the endpoint controller
+            Destroy(gameObject); //Destroy self after giving damage
+        }
+    }
 }
