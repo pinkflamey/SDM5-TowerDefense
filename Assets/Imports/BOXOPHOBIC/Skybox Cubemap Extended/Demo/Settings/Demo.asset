@@ -91,13 +91,13 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.07
+    value: 0.19
   contrast:
     overrideState: 1
     value: 0
   mixerRedOutRedIn:
     overrideState: 1
-    value: 100
+    value: 110
   mixerRedOutGreenIn:
     overrideState: 1
     value: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
     value: 0
   mixerGreenOutGreenIn:
     overrideState: 1
-    value: 100
+    value: 110
   mixerGreenOutBlueIn:
     overrideState: 1
     value: 0
