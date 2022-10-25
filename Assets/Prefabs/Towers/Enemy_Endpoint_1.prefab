@@ -2149,7 +2149,7 @@ GameObject:
   - component: {fileID: 7502482995366190666}
   m_Layer: 0
   m_Name: Enemy_Endpoint_1
-  m_TagString: Untagged
+  m_TagString: endpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

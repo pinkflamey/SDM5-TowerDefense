@@ -6,6 +6,7 @@ public class EndpointController : MonoBehaviour
 {
     [Header("Settings")]
     [Range(1f, 100f)] public float health;
+    public bool lose = false;
 
     //Private variables
     private float startHealth;
@@ -29,7 +30,7 @@ public class EndpointController : MonoBehaviour
         {
             //Game over
             Debug.Log("Game over! You lost lmao");
-            Debug.Break();
+            lose = true;
         }
     }
 

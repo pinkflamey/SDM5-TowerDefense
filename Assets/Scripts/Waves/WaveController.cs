@@ -7,6 +7,7 @@ public class WaveController : MonoBehaviour
     public Wave[] waves;
     public int waveCount = 0;
     public GameObject enemySpawnObj;
+    public bool wavesCompleted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class WaveController : MonoBehaviour
         if(waveCount == waves.Length) //Check if the last wave was the last wave of the level
         {
             Debug.Log("Level complete!");
+            wavesCompleted = true;
             yield return null;
         }
         else

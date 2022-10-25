@@ -11,9 +11,15 @@ public class StatController : MonoBehaviour
     [InspectorName("Object holding counter TMP")] public GameObject moneyCounterObj;
     private TextMeshProUGUI moneyCounter;
 
-    [Header("Money debugging/dev-tools")]
-    public bool addMoney = false;
-    [Range(-100, 100)] public int addMoneyAmount = 100;
+    [Space]
+
+    [Header("Win/lose system")]
+    [Range(0.1f, 10.0f)] [Tooltip("Delay for text to appear after winning. Delay to dissapear is delay + 3f")] public float textDelay = 3.0f;
+    private GameObject wintext;
+    private GameObject losetext;
+
+    private EndpointController epc;
+    private WaveController wc;
 
     [Space]
 
@@ -21,6 +27,12 @@ public class StatController : MonoBehaviour
     [InspectorName("Object holding counter TMP")] public GameObject counterObject;
     public int currentMax;
     private TextMeshProUGUI counter;
+
+    [Space]
+
+    [Header("Money debugging/dev-tools")]
+    public bool addMoney = false;
+    [Range(-100, 100)] public int addMoneyAmount = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +42,14 @@ public class StatController : MonoBehaviour
 
         //-----Money-----
         moneyCounter = moneyCounterObj.GetComponent<TextMeshProUGUI>();
+
+        //-----Win/lose-----
+        epc = GameObject.FindGameObjectWithTag("endpoint").GetComponent<EndpointController>();
+        wc = GetComponent<WaveController>();
+        wintext = GameObject.FindGameObjectWithTag("wintext");
+        losetext = GameObject.FindGameObjectWithTag("losetext");
+        wintext.SetActive(false);
+        losetext.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +66,9 @@ public class StatController : MonoBehaviour
         }
 
         moneyCounter.text = "$" + money;
+
+        //-----Win/lose-----
+        CheckForWinLose();
     }
 
     public void AddTakeMoney(float amount) //Use -float to remove money
@@ -87,5 +110,47 @@ public class StatController : MonoBehaviour
     int GetCurrentEnemies()
     {
         return GameObject.FindGameObjectsWithTag("enemy").Length;
+    }
+
+    void CheckForWinLose()
+    {
+        if(wc.wavesCompleted && GetCurrentEnemies() == 0)
+        {
+            //Win
+            StartCoroutine(Win());
+        }
+        else if (epc.lose)
+        {
+            //Lose
+            StartCoroutine(Lose());
+        }
+    }
+
+    IEnumerator Win()
+    {
+        //Show win text
+        yield return new WaitForSeconds(textDelay);
+        wintext.SetActive(true);
+        yield return new WaitForSeconds(textDelay + 3f);
+        wintext.SetActive(false);
+
+
+        //Load next level
+        GetComponent<LoadLevel>().LoadNextLevel();
+
+        yield return null;
+    }
+    IEnumerator Lose()
+    {
+        //Show lose text
+        yield return new WaitForSeconds(textDelay);
+        losetext.SetActive(true);
+        yield return new WaitForSeconds(textDelay + 3f);
+        losetext.SetActive(false);
+
+        //Load next level
+        GetComponent<LoadLevel>().LoadMainMenu();
+
+        yield return null;
     }
 }
