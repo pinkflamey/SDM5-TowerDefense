@@ -1319,7 +1319,7 @@ GameObject:
   - component: {fileID: 6206421974171078464}
   m_Layer: 0
   m_Name: MagicLaser Tower
-  m_TagString: Untagged
+  m_TagString: tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,6 +1414,7 @@ MonoBehaviour:
   turret: {fileID: 0}
   enemiesInRange: []
   placementCost: 50
+  removeBackPercentage: 0.5
   projType: 2
   projectile: {fileID: 0}
   damage: 1

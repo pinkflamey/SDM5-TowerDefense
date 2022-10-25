@@ -15,7 +15,8 @@ public class TowerController : MonoBehaviour
     [Space]
 
     [Header("Settings")]
-    public float placementCost = 1f;
+    [Tooltip("The amount of points it costs to place the tower")] public float placementCost = 1f;
+    [Tooltip("The amount of points player gets back when removing a tower, in percentage of placement cost")] [Range(0.0f, 1f)] public float removeBackPercentage = 0f;
     [Tooltip("0: Mortar | 1: Magic Ray")] [Range(0, 2)] public int projType = 0;
     [Tooltip("Not for RayTrace tower types")] public GameObject projectile;
     [Range(1.0f, 20.0f)] public float damage = 1f;

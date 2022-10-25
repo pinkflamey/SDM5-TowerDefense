@@ -28,13 +28,13 @@ public class Selector_TowerPlacer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && selectedObject.tag == "gridCube")
         {
-            PlaceTower(towerPrefabs[selectedTower]);
+
+            PlaceRemoveTower(towerPrefabs[selectedTower]);
         }
     }
 
-    void PlaceTower(GameObject towerType)
+    void PlaceRemoveTower(GameObject towerType)
     {
-        //CubeController cc = selectedObject.gameObject.GetComponent<CubeController>();
         StatController sc = GetComponent<StatController>();
         TowerController selectedTC = towerPrefabs[selectedTower].GetComponent<TowerController>();
 
@@ -44,9 +44,17 @@ public class Selector_TowerPlacer : MonoBehaviour
             TowerController tc = newTower.GetComponent<TowerController>(); //Get tower controller so the tower cost can be retrieved
             sc.AddTakeMoney(-tc.placementCost); //Remove the amount of money that the tower type costs
         }
-        else
+        else if (selectedObject.transform.childCount >= 1) //If the tile has children
         {
-            Debug.Log("Can't place tower, you don't have enough money, or there is already a tower there!");
+            foreach (Transform child in selectedObject.transform) //For each child:
+            {
+                if (child.tag == "tower") //If it is a tower:
+                {
+                    TowerController tc = child.gameObject.GetComponent<TowerController>();
+                    Destroy(child.gameObject); //Destroy the tower
+                    sc.AddTakeMoney(tc.placementCost * tc.removeBackPercentage); //Give money back (placement cost * 0.%)
+                }
+            }
         }
     }
 }
