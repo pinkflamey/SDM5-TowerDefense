@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EndpointController : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class EndpointController : MonoBehaviour
     public bool lose = false;
 
     //Private variables
-    private float startHealth;
+    private Slider healthbar;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +22,16 @@ public class EndpointController : MonoBehaviour
         }
 
         //Set up certain private variables
-        startHealth = health;
+        healthbar = GameObject.FindGameObjectWithTag("healthbar").GetComponent<Slider>();
+        healthbar.maxValue = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0f)
+        healthbar.value = health;
+
+        if (health <= 0f)
         {
             //Game over
             Debug.Log("Game over! You lost lmao");
