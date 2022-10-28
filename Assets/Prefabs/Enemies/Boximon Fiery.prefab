@@ -1173,11 +1173,11 @@ MonoBehaviour:
   waypointList: 0
   target: {fileID: 0}
   targetNumber: 0
-  killReward: 10
-  maxHealth: 5
-  movementSpeed: 3
-  damage: 8
-  rotateSpeed: 3
+  killReward: 25
+  maxHealth: 10
+  movementSpeed: 4
+  damage: 12
+  rotateSpeed: 5
   jail: {fileID: 7101464916290676793, guid: 647d03fb1cfef51438714da8b75fd6b5, type: 3}
   animationController: {fileID: 0}
 --- !u!114 &6681448692467195903
