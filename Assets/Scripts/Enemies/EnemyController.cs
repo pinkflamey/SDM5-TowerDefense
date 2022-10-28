@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class EnemyController : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private EnemyAnimationController animationController;
+
+    [Header("Health text")]
+    public GameObject healthText;
 
 
     private StatController sc;
@@ -98,6 +102,9 @@ public class EnemyController : MonoBehaviour
             damage_10 = false;
             TakeDamage(10f);
         }
+
+        //Set health text
+        healthText.GetComponent<TextMeshPro>().text = currentHealth.ToString();
     }
 
     public void TakeDamage(float amount)
@@ -114,6 +121,7 @@ public class EnemyController : MonoBehaviour
     {
         moving = false;
         animationController.die = true;
+        healthText.GetComponent<TextMeshPro>().text = "";
 
         yield return new WaitForSeconds(1.35f);
 
