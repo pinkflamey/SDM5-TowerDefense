@@ -15,6 +15,7 @@ TagManager:
   - wintext
   - losetext
   - healthbar
+  - water
   layers:
   - Default
   - TransparentFX
