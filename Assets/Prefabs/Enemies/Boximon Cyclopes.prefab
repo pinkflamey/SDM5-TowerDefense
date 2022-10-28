@@ -214,7 +214,7 @@ MonoBehaviour:
   targetNumber: 0
   killReward: 10
   maxHealth: 10
-  movementSpeed: 1
+  movementSpeed: 1.5
   damage: 8
   rotateSpeed: 5
   jail: {fileID: 7101464916290676793, guid: 647d03fb1cfef51438714da8b75fd6b5, type: 3}
