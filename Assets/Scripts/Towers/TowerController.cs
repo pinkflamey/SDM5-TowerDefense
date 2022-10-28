@@ -23,6 +23,7 @@ public class TowerController : MonoBehaviour
     [Range(1.0f, 20.0f)] public float health = 1f;
     [Range(1.0f, 20.0f)] public float range = 5f;
     [Range(0.1f, 20.0f)] public float delay = 1.0f;
+    [Range(0.1f, 1.0f)] public float rendererDelay = 1.0f;
     [Range(1.0f, 20.0f)] public float projSpeed = 1f;
 
     [Header("Mortar tower settings")]
@@ -236,7 +237,7 @@ public class TowerController : MonoBehaviour
     {
         gameObject.GetComponent<LineRenderer>().SetPositions(positions);
 
-        yield return new WaitForSeconds(delay - (delay / 2));
+        yield return new WaitForSeconds(rendererDelay);
 
         Vector3[] _positions = {transform.position, transform.position};
         gameObject.GetComponent<LineRenderer>().SetPositions(_positions);
