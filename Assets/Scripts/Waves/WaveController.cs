@@ -17,17 +17,17 @@ public class WaveController : MonoBehaviour
 
     IEnumerator Wave(Wave wave)
     {
-        Debug.Log("Wave: " + waveCount);
+        //Debug.Log("Wave: " + waveCount);
         //Debug.Break();
 
         for(int i = 0; i < wave.enemies.Length; i++) //For each enemy type;
         {
-            Debug.Log("Enemy type: " + wave.enemies[i].name);
+            //Debug.Log("Enemy type: " + wave.enemies[i].name);
             //Debug.Break();
 
             for(int j = 1; j <= wave.count[i]; j++) //Get the amount of enemies of that type to spawn and spawn them
             {
-                Debug.Log("Spawning enemy " + j + " out of " + wave.count[i]);
+                //Debug.Log("Spawning enemy " + j + " out of " + wave.count[i]);
 
                 Instantiate(wave.enemies[i], enemySpawnObj.transform.position, enemySpawnObj.transform.rotation); //Spawn enemy
                 yield return new WaitForSeconds(wave.enemyDelay); //Wait out delay till next enemy

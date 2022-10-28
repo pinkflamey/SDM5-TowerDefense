@@ -6,7 +6,6 @@ public class CubeController : MonoBehaviour
 {
     [Header("Settings")]
     public float selectHeight = 0.15f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -65,4 +64,30 @@ public class CubeController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         }
     }*/
+
+    private void OnDrawGizmos()
+    {
+        if((int)transform.position.x % 2 == 0 && (int)transform.position.z % 2 != 0)
+        {
+            Gizmos.color = new Color(0, 0, 255, 1);
+        }
+        else if((int)transform.position.x % 2 != 0 && (int)transform.position.z % 2 == 0)
+        {
+            Gizmos.color = new Color(0, 0, 255, 1);
+        }
+        else if((int)transform.position.x % 2 == 0 && (int)transform.position.z % 2 == 0)
+        {
+            Gizmos.color = new Color(255, 255, 0, 1);
+        }
+        else if((int)transform.position.x % 2 != 0 && (int)transform.position.z % 2 != 0)
+        {
+            Gizmos.color = new Color(255, 255, 0, 1);
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+        }
+
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
+    }
 }

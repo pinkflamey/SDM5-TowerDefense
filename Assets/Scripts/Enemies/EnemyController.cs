@@ -43,16 +43,17 @@ public class EnemyController : MonoBehaviour
         jail = GameObject.Find("Jail");
         //Find Stat Controller
         sc = GameObject.Find("GameController").GetComponent<StatController>();
+        WaypointManager wm = GameObject.Find("GameController").GetComponent<WaypointManager>();
 
         //Waypoints initialization
         switch (waypointList) //Select which waypoints from the manager to take at script awakening
         {
             case 1:
-                waypoints = WaypointManager.lv1_waypoints;
+                waypoints = wm.lv1;
                 break;
 
             default:
-                waypoints = WaypointManager.lv1_waypoints;
+                waypoints = wm.lv1;
                 break;
         }
 

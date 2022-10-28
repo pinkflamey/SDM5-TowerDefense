@@ -21,7 +21,7 @@ public class LoadLevel : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (nextLevel == null)
+        if (nextLevel != null)
         {
             SceneManager.LoadScene(nextLevel);
         }
