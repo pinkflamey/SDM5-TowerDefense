@@ -8,4 +8,5 @@ Press left-click to place a tower on a viable spot. A tower costs $50. You can r
 
 ## Links
 [Enemy movement flowchart](docs/flowcharts/enemy_movement.png)
+
 [Reflectie](docs/reflection.md)
