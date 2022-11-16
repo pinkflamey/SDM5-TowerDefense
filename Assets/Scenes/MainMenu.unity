@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: Level01
-  debug: 0
+  debug: 1
 --- !u!4 &654593707
 Transform:
   m_ObjectHideFlags: 0

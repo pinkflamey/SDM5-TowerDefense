@@ -106099,6 +106099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: MainMenu
+  debug: 1
 --- !u!1 &1745777472
 GameObject:
   m_ObjectHideFlags: 0
